@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import TitleSection from '../TitleSection';
 import Slider from "react-slick";
 import { WorkProcessList } from '@/data/workprocess';
