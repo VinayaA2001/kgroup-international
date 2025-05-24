@@ -8,7 +8,6 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 const HowWeWork = () => {
 
     const sliderRef = useRef<Slider>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
 
     const settings = {
         dots: false,
@@ -19,7 +18,7 @@ const HowWeWork = () => {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: false,
-        beforeChange: (_: number, next: number) => setActiveIndex(next),
+        // beforeChange: (_: number, next: number) => setActiveIndex(next),
     };
 
     const colors = [
