@@ -1,39 +1,128 @@
-import React from 'react'
+import { IoMdArrowDropleft } from "react-icons/io";
+import React, { useEffect, useRef, useState } from 'react';
+import Slider from 'react-slick';
+import { LuMouse } from "react-icons/lu";
+import { IoMdArrowDropright } from "react-icons/io";
 
-const Hero = () => {
+import dynamic from 'next/dynamic';
+
+const MotionTextB2T = dynamic(() => import('../MotionText/MotionTextB2T'), { ssr: false });
+
+const HeroItems = [
+    {
+        image: '/images/slide1.jpg',
+        mainText: "Empowering industries with innovative, purpose-led solutions.",
+        subText: "A dynamic group of companies delivering integrated services with integrity, creativity, and lasting impact."
+    },
+    {
+        image: '/images/slide2.jpg',
+        mainText: "Shaping tomorrow through collaboration, creativity, and purpose.",
+        subText: "Empowering people and businesses with integrated, forward-thinking solutions that make a difference."
+    },
+    {
+        image: '/images/slide3.jpg',
+        mainText: "Driving progress through unity, innovation, and smart solutions.",
+        subText: "A future-focused business group delivering trusted services across industries with heart and vision."
+    }
+];
+
+
+
+const Hero: React.FC = () => {
+
+    const sliderRef = useRef<Slider>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const duration = 3000;
+    useEffect(() => {
+        setProgress(0);
+        const start = Date.now();
+
+        const interval = setInterval(() => {
+            const elapsed = Date.now() - start;
+            const percent = Math.min((elapsed / duration) * 100, 100);
+            setProgress(percent);
+
+            if (percent >= 100) {
+                sliderRef.current?.slickNext();
+            }
+        }, 50);
+
+        return () => clearInterval(interval);
+    }, [activeIndex]);
+
+    const settings = {
+        dots: false,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: "linear",
+        beforeChange: (_: number, next: number) => setActiveIndex(next),
+    };
+
     return (
-        <div className='bg-[#fbf9f9] h-[80vh]'>
-            <div className='container mx-auto'>
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-1 flex items-center">
-                        <div className='py-16 relative'>
-                            <div className='text-[68px] font-semibold tracking-wide'>We Are</div>
-                            <div className='text-[68px] font-semibold leading-[0.8] bg-[#ffd876bf] inline-block tracking-wide'>Creative</div>
-                            <div className='text-[68px] font-semibold tracking-wide'>& <span className='bg-[#92e7ffc3] inline-block leading-[0.8]'>Unique</span></div>
+        <section className="w-full h-screen overflow-hidden relative">
+            <Slider {...settings} ref={sliderRef}>
+                {HeroItems.map((hero, index) => (
+                    <div key={index} className="relative w-full h-screen">
+                        <img
+                            src={hero?.image}
+                            alt={`Family Slide ${index + 1}`}
+                            className="object-cover w-full h-full"
+                        />
+                        <div className="absolute h-screen bg-[#313232b2] z-[100] inset-0"></div>
+                        <div className="absolute bottom-32 z-[1500] px-24">
+                            <h1 className='text-white text-[48px] font-thin text-left'>
+                                <MotionTextB2T text={hero?.mainText} />
+                            </h1>
+                            <h6 className="text-white text-[24px] font-thin">
+                                <MotionTextB2T text={hero?.subText} />
+                            </h6>
+                        </div>
 
-                            <div className='text-black/70'>
-                                Our team of talented designers, developers and strategists collaborate to bring your vision to life and exceed your expectations
-                            </div>
-                            <button className='bg-[#8a2319] hover:bg-[#db4639] text-white px-6 py-3 mt-4 rounded-md font-medium'>Get Started</button>
-                            <div className="w-4 h-2 bg-[#fec3be] rounded-t-full bottom-[100px] absolute -left-10 rotate-[70deg]"></div>
-                            <div className="w-0 h-0 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent
-                             border-[#e0f58b] absolute top-[40px] right-80 rotate-[70deg]"></div>
-                        </div>
                     </div>
-                    <div className="col-span-1 flex items-center justify-center">
-                        <div className='flex items-center justify-start h-full py-16 relative max-w-[400px]'>
-                            <img src='/images/hero-image.jpg' className='h-[500px] object-cover 
-                          rounded-t-[100px] rounded-bl-[100px] rounded-br-[36px] relative'/>
-                            {/* <img src={'/images/hero-doodle.png'} className='h-[200px] rotate-[100deg] top-0 absolute right-0'/> */}
-                            <div className="w-3 h-3 bg-[#ffd876bf] rotate-45 top-10 absolute right-0"></div>
-                            <div className="w-4 h-4 bg-[#92e7ffc3] rounded-tl-full overflow-hidden top-14 absolute left-0"></div>
-                            <div className="w-4 h-4 bg-[#d192fb] rounded-full bottom-10 absolute right-0"></div>
-                        </div>
-                    </div>
+                ))}
+            </Slider>
+            <div className='flex items-center justify-center bg-black'>
+                <div className='absolute right-0 bottom-[50%] z-[1000] mr-[100px] border-solid border-[2px] border-[#ffffff] 
+                           rounded-full flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
+                    onClick={() => { sliderRef.current?.slickNext(); }}
+                >
+                    <IoMdArrowDropright className="text-white" />
                 </div>
-            </div>
-        </div>
-    )
-}
+                <div className='absolute left-0 bottom-[50%] z-[1000] ml-[100px] border-solid border-[2px] border-[#ffffff] 
+                           rounded-full flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
+                    onClick={() => { sliderRef.current?.slickPrev(); }}
+                >
+                    <IoMdArrowDropleft className="text-white" />
+                </div>
+                <div className='flex bottom-16 left-[100px] absolute z-[1500]'>
+                    {HeroItems?.map((_, index) => (
+                        activeIndex === index ? (
+                            <div
+                                key={index}
+                                className="bg-[#ffffff] w-[80px] h-[4px] rounded-[2px] mr-2 overflow-hidden"
+                            >
+                                <div
+                                    className="bg-[#8a2319] h-full"
+                                    style={{ width: `${progress}%` }}
+                                ></div>
+                            </div>
+                        ) : (
+                            <div
+                                key={index}
+                                className="bg-[#ffffff] w-[25px] h-[4px] rounded-[2px] mr-2"
+                            />
+                        )
+                    ))}
+                </div>
 
-export default Hero
+                <LuMouse className='text-white text-[24px] absolute bottom-8 text-center animate-bounce z-[1500]' />
+            </div>
+
+        </section >
+    );
+};
+
+export default Hero;

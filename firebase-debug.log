@@ -1,0 +1,21 @@
+[debug] [2025-05-31T09:32:24.488Z] ----------------------------------------------------------------------
+[debug] [2025-05-31T09:32:24.490Z] Command:       /usr/local/bin/node /opt/homebrew/bin/firebase init
+[debug] [2025-05-31T09:32:24.490Z] CLI Version:   13.16.0
+[debug] [2025-05-31T09:32:24.490Z] Platform:      darwin
+[debug] [2025-05-31T09:32:24.490Z] Node Version:  v20.18.0
+[debug] [2025-05-31T09:32:24.490Z] Time:          Sat May 31 2025 13:32:24 GMT+0400 (Gulf Standard Time)
+[debug] [2025-05-31T09:32:24.490Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-31T09:32:24.493Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-31T09:32:24.493Z] > authorizing via signed-in user (webmaster.cruisemaster@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/dilshadkk/Developer/Personal/Web/Next JS/thekgroup
+

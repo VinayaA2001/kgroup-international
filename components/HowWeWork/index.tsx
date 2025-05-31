@@ -29,7 +29,7 @@ const HowWeWork = () => {
     ];
 
     return (
-        <div className='bg-white'>
+        <div className='bg-[#f4f4f4]' id='how-we-work'>
             <div className="container mx-auto py-12">
                 <div className='flex justify-between items-center'>
                     <TitleSection title="How We Work" subTitle="WORKING PROCESS" description="Our working process at our design agency is carefully 
@@ -37,8 +37,8 @@ const HowWeWork = () => {
                     <div className='flex'>
                         <div className='mr-2 cursor-pointer border bg-[#ffffff] rounded-full 
                         h-[50px] w-[50px] flex items-center justify-center'
-                            onClick={() => { sliderRef.current?.slickPrev() }}><MdOutlineArrowBackIosNew className='text-8a2319'/></div>
-                        <div className='cursor-pointer border bg-[#fffff] rounded-full 
+                            onClick={() => { sliderRef.current?.slickPrev() }}><MdOutlineArrowBackIosNew className='text-[#8a2319]'/></div>
+                        <div className='cursor-pointer border bg-[#ffffff] rounded-full 
                         h-[50px] w-[50px] flex items-center justify-center'
                             onClick={() => { sliderRef.current?.slickNext() }}><MdOutlineArrowForwardIos className='text-[#8a2319]'/></div>
                     </div>
@@ -47,7 +47,7 @@ const HowWeWork = () => {
                 <Slider {...settings} ref={sliderRef}>
                     {WorkProcessList?.map((item, index) => (
                         <div key={index} className=''>
-                            <div className='mr-2 py-8 flex items-center justify-center border border-[#8a22192b] rounded-md'>
+                            <div className='mr-2 py-8 flex items-center justify-center border border-[#dfdfdf] rounded-md bg-white'>
                                 <div className='w-[250px] h-[200px] overflow-hidden'>
                                     <div className='text-[#8a2319] bg-[#8a22190e] inline-block px-3 py-2 rounded-[12px]' style={{ backgroundColor: `${colors[index % colors?.length]}` }}>
                                         {'0' + String(index + 1)}
