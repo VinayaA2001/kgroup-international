@@ -72,11 +72,11 @@ const Hero: React.FC = () => {
                             className="object-cover w-full h-full"
                         />
                         <div className="absolute h-screen bg-[#313232b2] z-[100] inset-0"></div>
-                        <div className="absolute bottom-32 z-[1500] px-24">
-                            <h1 className='text-white text-[48px] font-thin text-left'>
+                        <div className="absolute bottom-32 z-[1500] lg:px-24 md:px-12 px-6">
+                            <h1 className='text-white lg:text-[48px] md:text-[36px] text-[22px] font-thin text-left'>
                                 <MotionTextB2T text={hero?.mainText} />
                             </h1>
-                            <h6 className="text-white text-[24px] font-thin">
+                            <h6 className="text-white lg:text-[24px] md:text-[16px] text-[16px] font-thin">
                                 <MotionTextB2T text={hero?.subText} />
                             </h6>
                         </div>
@@ -85,14 +85,14 @@ const Hero: React.FC = () => {
                 ))}
             </Slider>
             <div className='flex items-center justify-center bg-black'>
-                <div className='absolute right-0 bottom-[50%] z-[1000] mr-[100px] border-solid border-[2px] border-[#ffffff] 
-                           rounded-full flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
+                <div className='hidden absolute right-0 bottom-[50%] z-[1000] mr-[100px] border-solid border-[2px] border-[#ffffff] 
+                           rounded-full lg:flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
                     onClick={() => { sliderRef.current?.slickNext(); }}
                 >
                     <IoMdArrowDropright className="text-white" />
                 </div>
-                <div className='absolute left-0 bottom-[50%] z-[1000] ml-[100px] border-solid border-[2px] border-[#ffffff] 
-                           rounded-full flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
+                <div className='hidden absolute left-0 bottom-[50%] z-[1000] ml-[100px] border-solid border-[2px] border-[#ffffff] 
+                           rounded-full lg:flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
                     onClick={() => { sliderRef.current?.slickPrev(); }}
                 >
                     <IoMdArrowDropleft className="text-white" />

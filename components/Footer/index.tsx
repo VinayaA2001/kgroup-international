@@ -7,10 +7,10 @@ import { CiMobile3 } from "react-icons/ci";
 const Footer = () => {
     return (
         <div className='border-t border-[#3a3a3a1c] bg-[#fafafa]'>
-            <div className='container mx-auto py-16'>
-                <div className='grid grid-cols-4'>
-                    <div className="col-span-1">
-                        <div>
+            <div className='lg:mx-12 md:mx-8 mx-6 py-16'>
+                <div className='grid lg:grid-cols-4 md:grid-cols-2'>
+                    <div className="col-span-1 flex items-center justify-center">
+                        <div className='w-[200px] mb-8'>
                             <img src={'/logos/klogo.png'} className='h-[60px] mb-4' alt='logo' />
                             <p className='text-black/60 mb-4 font-light'>
                                 We unite diverse companies to deliver innovative, trusted solutions that meet evolving client needs.
@@ -44,7 +44,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="col-span-1 flex items-center justify-center">
-                        <div className='inline-block'>
+                        <div className='w-[200px] mb-8'>
                             <div className='mb-6 font-medium text-black'>QUICK LINKS</div>
                             <div className='flex flex-col h-full'>
                                 {MenuItems?.map((item, index) => (
@@ -54,7 +54,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="col-span-1 flex items-start justify-center">
-                        <div className='inline-block'>
+                        <div className='w-[200px] mb-8'>
                             <div className='mb-4 font-medium text-black'>OFFICE</div>
                             <div className='flex flex-col h-full'>
                                 <a href="https://maps.app.goo.gl/6Yd3N1GUatZ1A2PD8"
@@ -64,7 +64,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="col-span-1 flex items-start justify-center">
-                        <div className='inline-block'>
+                        <div className='w-[200px] mb-8'>
                             <div className='mb-4 font-medium text-black'>CONTACT</div>
                             <div className='flex flex-col h-full'>
                                 <a
@@ -84,7 +84,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='container mx-auto'>
+            <div className='lg:mx-12 md:mx-8 mx-6'>
                 <div className='flex items-center justify-center border-t border-[#3a3a3a1c] text-black/60 font-light py-6 text-[14px]'>
                     Copyright © 2025 The K Group. All Rights Reserved.
                 </div>

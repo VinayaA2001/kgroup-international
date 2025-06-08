@@ -18,7 +18,28 @@ const HowWeWork = () => {
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: false,
-        // beforeChange: (_: number, next: number) => setActiveIndex(next),
+        responsive: [
+            {
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    dots: true
+                }
+            }
+        ]
     };
 
     const colors = [
@@ -30,17 +51,17 @@ const HowWeWork = () => {
 
     return (
         <div className='bg-[#f4f4f4]' id='how-we-work'>
-            <div className="container mx-auto py-12">
+            <div className="lg:mx-12 md:mx-8 mx-6 py-12">
                 <div className='flex justify-between items-center'>
                     <TitleSection title="How We Work" subTitle="WORKING PROCESS" description="Our working process at our design agency is carefully 
                 crafted to ensure efficient collaboration, clear communication, and successful project outcomes" />
-                    <div className='flex'>
+                    <div className='md:flex hidden'>
                         <div className='mr-2 cursor-pointer border bg-[#ffffff] rounded-full 
                         h-[50px] w-[50px] flex items-center justify-center'
-                            onClick={() => { sliderRef.current?.slickPrev() }}><MdOutlineArrowBackIosNew className='text-[#8a2319]'/></div>
+                            onClick={() => { sliderRef.current?.slickPrev() }}><MdOutlineArrowBackIosNew className='text-[#8a2319]' /></div>
                         <div className='cursor-pointer border bg-[#ffffff] rounded-full 
                         h-[50px] w-[50px] flex items-center justify-center'
-                            onClick={() => { sliderRef.current?.slickNext() }}><MdOutlineArrowForwardIos className='text-[#8a2319]'/></div>
+                            onClick={() => { sliderRef.current?.slickNext() }}><MdOutlineArrowForwardIos className='text-[#8a2319]' /></div>
                     </div>
                 </div>
 

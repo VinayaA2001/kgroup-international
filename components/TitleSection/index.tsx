@@ -13,7 +13,7 @@ const TitleSection = ({title,subTitle,description}:SectionType) => {
             <div className='mr-2 bg-[#8a2319] h-[2px] w-[30px]'/>
             <span className='text-[14px] font-semibold text-black/60'>{subTitle}</span>
         </div>
-        <h1 className='text-[44px] font-semibold mb-3 text-black/90 max-w-[500px] leading-[60px]'>
+        <h1 className='lg:text-[44px] md:text-[36px] text-[24px] font-semibold mb-3 text-black/90 max-w-[500px] lg:leading-[60px]'>
             {title}
         </h1>
         <p className='text-black/70 text-[16px] max-w-[500px]'>{description}</p>
