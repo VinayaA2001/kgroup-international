@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
                         />
                         <div className="absolute h-screen bg-[#313232b2] z-[100] inset-0"></div>
                         <div className="absolute bottom-32 z-[1500] lg:px-24 md:px-12 px-6">
-                            <h1 className='text-white lg:text-[48px] md:text-[36px] text-[22px] font-thin text-left'>
+                            <h1 className='text-white lg:text-[48px] md:text-[36px] text-[28px] font-thin text-left'>
                                 <MotionTextB2T text={hero?.title} />
                             </h1>
                             <h6 className="text-white lg:text-[24px] md:text-[16px] text-[16px] font-thin">
@@ -98,12 +98,20 @@ const Hero: React.FC = () => {
                 >
                     <IoMdArrowDropleft className="text-white" />
                 </div>
+                <div
+                    className="bg-[#ffffff] w-[80vw] h-[4px] rounded-[2px] mr-2 overflow-hidden lg:hidden block absolute z-[1500] bottom-4"
+                >
+                    <div
+                        className="bg-[#8a2319] h-full"
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                </div>
                 <div className='flex bottom-16 left-[100px] absolute z-[1500]'>
                     {ServicesList?.map((_, index) => (
                         activeIndex === index ? (
                             <div
                                 key={index}
-                                className="bg-[#ffffff] w-[80px] h-[4px] rounded-[2px] mr-2 overflow-hidden"
+                                className="bg-[#ffffff] w-[80px] h-[4px] rounded-[2px] mr-2 overflow-hidden lg:block hidden"
                             >
                                 <div
                                     className="bg-[#8a2319] h-full"
