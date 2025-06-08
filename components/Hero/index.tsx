@@ -9,23 +9,23 @@ import { ServicesList } from "@/data/services";
 
 const MotionTextB2T = dynamic(() => import('../MotionText/MotionTextB2T'), { ssr: false });
 
-const HeroItems = [
-    {
-        image: '/images/slide1.jpg',
-        mainText: "Empowering industries with innovative, purpose-led solutions.",
-        subText: "A dynamic group of companies delivering integrated services with integrity, creativity, and lasting impact."
-    },
-    {
-        image: '/images/slide2.jpg',
-        mainText: "Shaping tomorrow through collaboration, creativity, and purpose.",
-        subText: "Empowering people and businesses with integrated, forward-thinking solutions that make a difference."
-    },
-    {
-        image: '/images/slide3.jpg',
-        mainText: "Driving progress through unity, innovation, and smart solutions.",
-        subText: "A future-focused business group delivering trusted services across industries with heart and vision."
-    }
-];
+// const HeroItems = [
+//     {
+//         image: '/images/slide1.jpg',
+//         mainText: "Empowering industries with innovative, purpose-led solutions.",
+//         subText: "A dynamic group of companies delivering integrated services with integrity, creativity, and lasting impact."
+//     },
+//     {
+//         image: '/images/slide2.jpg',
+//         mainText: "Shaping tomorrow through collaboration, creativity, and purpose.",
+//         subText: "Empowering people and businesses with integrated, forward-thinking solutions that make a difference."
+//     },
+//     {
+//         image: '/images/slide3.jpg',
+//         mainText: "Driving progress through unity, innovation, and smart solutions.",
+//         subText: "A future-focused business group delivering trusted services across industries with heart and vision."
+//     }
+// ];
 
 
 
@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
                     <IoMdArrowDropleft className="text-white" />
                 </div>
                 <div className='flex bottom-16 left-[100px] absolute z-[1500]'>
-                    {HeroItems?.map((_, index) => (
+                    {ServicesList?.map((_, index) => (
                         activeIndex === index ? (
                             <div
                                 key={index}
@@ -113,7 +113,7 @@ const Hero: React.FC = () => {
                         ) : (
                             <div
                                 key={index}
-                                className="bg-[#ffffff] w-[25px] h-[4px] rounded-[2px] mr-2"
+                                className="bg-[#ffffff] lg:w-[25px] h-[4px] rounded-[2px] mr-2 lg:block hidden"
                             />
                         )
                     ))}
