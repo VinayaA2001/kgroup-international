@@ -5,6 +5,7 @@ import { LuMouse } from "react-icons/lu";
 import { IoMdArrowDropright } from "react-icons/io";
 
 import dynamic from 'next/dynamic';
+import { ServicesList } from "@/data/services";
 
 const MotionTextB2T = dynamic(() => import('../MotionText/MotionTextB2T'), { ssr: false });
 
@@ -64,7 +65,7 @@ const Hero: React.FC = () => {
     return (
         <section className="w-full h-screen overflow-hidden relative">
             <Slider {...settings} ref={sliderRef}>
-                {HeroItems.map((hero, index) => (
+                {ServicesList.map((hero, index) => (
                     <div key={index} className="relative w-full h-screen">
                         <img
                             src={hero?.image}
@@ -74,10 +75,10 @@ const Hero: React.FC = () => {
                         <div className="absolute h-screen bg-[#313232b2] z-[100] inset-0"></div>
                         <div className="absolute bottom-32 z-[1500] lg:px-24 md:px-12 px-6">
                             <h1 className='text-white lg:text-[48px] md:text-[36px] text-[22px] font-thin text-left'>
-                                <MotionTextB2T text={hero?.mainText} />
+                                <MotionTextB2T text={hero?.title} />
                             </h1>
                             <h6 className="text-white lg:text-[24px] md:text-[16px] text-[16px] font-thin">
-                                <MotionTextB2T text={hero?.subText} />
+                                <MotionTextB2T text={hero?.description} />
                             </h6>
                         </div>
 

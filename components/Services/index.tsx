@@ -17,7 +17,7 @@ const Services = () => {
         slidesToShow: 2,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         arrows: false,
         rows: 2,
         slidesPerRow: 2,
@@ -30,14 +30,14 @@ const Services = () => {
                 breakpoint: 1024, // Adjust as needed for "lg"
                 settings: {
                     slidesPerRow: 2,
-                    // rows: 2,
+                    rows: 2,
                 }
             },
             {
                 breakpoint: 1023, // Below "lg"
                 settings: {
                     slidesPerRow: 1,
-                    // rows: 1, 
+                    rows: 1, 
                 }
             }
         ]

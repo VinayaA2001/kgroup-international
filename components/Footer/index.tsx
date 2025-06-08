@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className='grid lg:grid-cols-4 md:grid-cols-2'>
                     <div className="col-span-1 flex items-center justify-center">
                         <div className='w-[200px] mb-8'>
-                            <img src={'/logos/klogo.png'} className='h-[60px] mb-4' alt='logo' />
+                            <img src={'/logos/klogo.png'} className='max-h-[60px] mb-4' alt='logo' />
                             <p className='text-black/60 mb-4 font-light'>
                                 We unite diverse companies to deliver innovative, trusted solutions that meet evolving client needs.
                             </p>
