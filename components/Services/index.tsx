@@ -60,7 +60,7 @@ const Services = () => {
                         <MotionTextR2L text='Delivering impactful solutions with a focus on quality and client satisfaction' />
                     </div>
                 </div>
-                <div className='flex items-center justify-center mb-8'>
+                <div className='lg:flex items-center justify-center mb-8 hidden'>
                     {[1, 2, 3]?.map((_, index) => (
                         activeIndex === index ? (
                             <div
