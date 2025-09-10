@@ -38,7 +38,7 @@ const About = () => {
                         <div className="col-span-1">
                             <div className="border border-[#8a221931] rounded-[12px] relative">
                                 <img
-                                    src="/images/vision.jpg"
+                                    src="/images/vision.webp"
                                     className="h-[200px] w-full object-cover object-center rounded-t-[12px]"
                                     alt="Vision"
                                 />
@@ -53,7 +53,7 @@ const About = () => {
                         <div className="col-span-1">
                             <div className="border border-[#8a221931] rounded-[12px] relative">
                                 <img
-                                    src="/images/mission.jpg"
+                                    src="/images/mission.webp"
                                     className="h-[200px] w-full object-cover object-center rounded-t-[12px]"
                                     alt="Vision"
                                 />

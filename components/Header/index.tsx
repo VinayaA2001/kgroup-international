@@ -12,7 +12,7 @@ const Header = () => {
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2'>
                         <div className="col-span-1">
                             <div>
-                                <img src={'/logos/klogo-trans.png'} className='max-h-[60px]' alt='logo' />
+                                <img src={'/logos/klogo-trans.webp'} className='max-h-[60px]' alt='logo' />
                             </div>
                         </div>
                         <div className="lg:col-span-1 lg:flex hidden">

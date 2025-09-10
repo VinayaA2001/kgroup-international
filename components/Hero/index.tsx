@@ -11,17 +11,17 @@ const MotionTextB2T = dynamic(() => import('../MotionText/MotionTextB2T'), { ssr
 
 // const HeroItems = [
 //     {
-//         image: '/images/slide1.jpg',
+//         image: '/images/slide1.webp',
 //         mainText: "Empowering industries with innovative, purpose-led solutions.",
 //         subText: "A dynamic group of companies delivering integrated services with integrity, creativity, and lasting impact."
 //     },
 //     {
-//         image: '/images/slide2.jpg',
+//         image: '/images/slide2.webp',
 //         mainText: "Shaping tomorrow through collaboration, creativity, and purpose.",
 //         subText: "Empowering people and businesses with integrated, forward-thinking solutions that make a difference."
 //     },
 //     {
-//         image: '/images/slide3.jpg',
+//         image: '/images/slide3.webp',
 //         mainText: "Driving progress through unity, innovation, and smart solutions.",
 //         subText: "A future-focused business group delivering trusted services across industries with heart and vision."
 //     }

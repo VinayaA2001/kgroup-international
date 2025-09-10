@@ -18,7 +18,7 @@ export default function Document() {
         {/* Open Graph (Facebook/LinkedIn) */}
         <meta property="og:title" content="The K Group – Empowering Creative Solutions" />
         <meta property="og:description" content="We deliver innovative digital solutions and consulting services tailored to your business needs." />
-        <meta property="og:image" content="/logos/klogo.png" />
+        <meta property="og:image" content="/logos/klogo.webp" />
         {/* <meta property="og:url" content="https://yourdomain.com" /> */}
         <meta property="og:type" content="website" />
 
@@ -26,7 +26,7 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="The K Group – Empowering Creative Solutions" />
         <meta name="twitter:description" content="We deliver innovative digital solutions and consulting services tailored to your business needs." />
-        <meta name="twitter:image" content="/logos/klogo.png" />
+        <meta name="twitter:image" content="/logos/klogo.webp" />
 
       </Head>
       <body className="antialiased">
