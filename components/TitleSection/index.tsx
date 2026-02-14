@@ -1,24 +1,19 @@
-import React from 'react';
+import React from "react";
 
 interface SectionType {
-    title:string;
-    subTitle:string;
-    description:string;
+  title: string;
+  subTitle: string;
+  description: string;
 }
 
-const TitleSection = ({title,subTitle,description}:SectionType) => {
+const TitleSection = ({ title, subTitle, description }: SectionType) => {
   return (
-    <div className='mb-8'>
-        <div className='flex items-center mb-3'>
-            <div className='mr-2 bg-[#8a2319] h-[2px] w-[30px]'/>
-            <span className='text-[14px] font-semibold text-black/60'>{subTitle}</span>
-        </div>
-        <h1 className='lg:text-[44px] md:text-[36px] text-[24px] font-semibold mb-3 text-black/90 max-w-[500px] lg:leading-[60px]'>
-            {title}
-        </h1>
-        <p className='text-black/70 text-[16px] max-w-[500px]'>{description}</p>
+    <div className="mb-10">
+      <div className="section-title mb-3">{subTitle}</div>
+      <h2 className="text-4xl md:text-5xl font-display text-ink">{title}</h2>
+      <p className="mt-3 text-text-secondary max-w-xl">{description}</p>
     </div>
-  )
-}
+  );
+};
 
-export default TitleSection
+export default TitleSection;

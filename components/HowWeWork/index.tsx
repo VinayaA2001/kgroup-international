@@ -1,88 +1,63 @@
-import React, { useRef } from 'react';
-import TitleSection from '../TitleSection';
-import Slider from "react-slick";
-import { WorkProcessList } from '@/data/workprocess';
-import { MdOutlineArrowForwardIos } from "react-icons/md";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import React from "react";
+import Link from "next/link";
+import { WorkProcessList } from "@/data/workprocess";
 
 const HowWeWork = () => {
-
-    const sliderRef = useRef<Slider>(null);
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    dots: true,
-                }
-            },
-            {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 1,
-                    dots: true
-                }
-            }
-        ]
-    };
-
-    const colors = [
-        "rgba(39, 71, 201, 0.1)",
-        "rgba(0, 184, 148, 0.1)",
-        "rgba(214, 48, 49, 0.1)",
-        "rgba(253, 203, 110, 0.1)"
-    ];
-
-    return (
-        <div className='bg-[#f4f4f4]' id='how-we-work'>
-            <div className="lg:mx-12 md:mx-8 mx-6 py-12">
-                <div className='flex justify-between items-center'>
-                    <TitleSection title="How We Work" subTitle="WORKING PROCESS" description="Our working process at our design agency is carefully 
-                crafted to ensure efficient collaboration, clear communication, and successful project outcomes" />
-                    <div className='md:flex hidden'>
-                        <div className='mr-2 cursor-pointer border bg-[#ffffff] rounded-full 
-                        h-[50px] w-[50px] flex items-center justify-center'
-                            onClick={() => { sliderRef.current?.slickPrev() }}><MdOutlineArrowBackIosNew className='text-[#8a2319]' /></div>
-                        <div className='cursor-pointer border bg-[#ffffff] rounded-full 
-                        h-[50px] w-[50px] flex items-center justify-center'
-                            onClick={() => { sliderRef.current?.slickNext() }}><MdOutlineArrowForwardIos className='text-[#8a2319]' /></div>
-                    </div>
-                </div>
-
-                <Slider {...settings} ref={sliderRef}>
-                    {WorkProcessList?.map((item, index) => (
-                        <div key={index} className=''>
-                            <div className='mr-2 py-8 flex items-center justify-center border border-[#dfdfdf] rounded-md bg-white'>
-                                <div className='w-[250px] h-[200px] overflow-hidden'>
-                                    <div className='text-[#8a2319] bg-[#8a22190e] inline-block px-3 py-2 rounded-[12px]' style={{ backgroundColor: `${colors[index % colors?.length]}` }}>
-                                        {'0' + String(index + 1)}
-                                    </div>
-                                    <div className='text-2xl my-2 font-semibold'>{item?.title}</div>
-                                    <p className='text-black/60'>{item?.description}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
+  return (
+    <section className="bg-white" id="how-we-work">
+      <div className="max-w-6xl mx-auto px-6 py-20 grid lg:grid-cols-[1.05fr,1.3fr] gap-12">
+        <div>
+          <div className="section-title mb-4">WORK PROCESS</div>
+          <h2 className="text-4xl md:text-5xl font-display text-ink">
+            A calm, precise process for bold outcomes.
+          </h2>
+          <p className="mt-4 text-text-secondary leading-relaxed">
+            We balance strategy, design, and delivery so every engagement feels focused and
+            measurable. Clear milestones keep teams aligned and momentum steady.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/contact" className="button-primary">
+              Talk to us
+            </Link>
+            <Link href="/services" className="button-ghost">
+              See capabilities
+            </Link>
+          </div>
+          <div className="mt-10 grid grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-border bg-sand p-4">
+              <div className="text-sm text-text-secondary">Avg delivery</div>
+              <div className="text-2xl font-semibold text-ink">4-8 weeks</div>
             </div>
+            <div className="rounded-2xl border border-border bg-sand p-4">
+              <div className="text-sm text-text-secondary">Collab touchpoints</div>
+              <div className="text-2xl font-semibold text-ink">Weekly</div>
+            </div>
+          </div>
         </div>
-    )
-}
 
-export default HowWeWork
+        <div className="space-y-6">
+          {WorkProcessList.map((step, index) => (
+            <div key={step.title} className="flex gap-4">
+              <div className="flex flex-col items-center">
+                <div className="h-10 w-10 rounded-full bg-ink text-white flex items-center justify-center text-sm font-semibold">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                {index < WorkProcessList.length - 1 ? (
+                  <div className="w-px flex-1 bg-border mt-2" />
+                ) : null}
+              </div>
+              <div className="flex-1 rounded-2xl border border-border bg-sand/70 p-5 shadow-card">
+                <div className="text-lg font-semibold text-ink">{step.title}</div>
+                <p className="mt-2 text-text-secondary text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HowWeWork;

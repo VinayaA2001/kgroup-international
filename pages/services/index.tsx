@@ -1,45 +1,57 @@
-import { ServicesList } from "../../data/services";
 import Link from "next/link";
+import { ServicesList } from "../../data/services";
 
 export default function ServicesPage() {
   return (
-    <section className="pt-28 py-16 bg-white">
-      {/* Section Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-extrabold text-gray-900 relative inline-block">
-          Our Services
-          <span className="block w-16 h-1 bg-red-600 mx-auto mt-2"></span>
-        </h2>
-        <p className="mt-4 text-gray-600">
-          Delivering impactful solutions with a focus on quality and client satisfaction.
-        </p>
-      </div>
+    <section className="pt-32 pb-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 items-end">
+          <div>
+            <div className="section-title mb-4">SERVICES</div>
+            <h1 className="text-4xl md:text-5xl font-display text-ink">Design, build, deliver.</h1>
+            <p className="mt-4 text-text-secondary max-w-xl">
+              We offer a full suite of services to take ideas from concept to market. Each
+              engagement is tailored to your goals and capacity.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-border bg-white p-6 shadow-card">
+            <div className="text-xs uppercase tracking-[0.3em] text-text-secondary">
+              Delivery promise
+            </div>
+            <div className="mt-3 text-lg font-semibold text-ink">
+              Clear scope, fast feedback loops, and measurable outcomes.
+            </div>
+          </div>
+        </div>
 
-      {/* Services Grid */}
-      <div className="max-w-6xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-6">
-        {ServicesList.map((service) => (
-          <Link
-            key={service.slug} 
-            href={`/services/${service.slug}`}
-            className="group block rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 overflow-hidden border"
-          >
-            <div className="h-48 w-full overflow-hidden">
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-              />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-gray-600 text-sm leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          </Link>
-        ))}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {ServicesList.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="group rounded-3xl border border-border bg-white shadow-card overflow-hidden hover:-translate-y-1 hover:shadow-lift transition"
+            >
+              <div className="h-44 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-ink group-hover:text-accent transition">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                  {service.description}
+                </p>
+                <div className="mt-4 text-xs uppercase tracking-[0.2em] text-text-secondary">
+                  View details
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

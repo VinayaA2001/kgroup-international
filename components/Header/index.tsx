@@ -1,60 +1,74 @@
-import { MenuItems } from '@/data/header'
-import React from 'react'
-import { FaInstagram } from "react-icons/fa";
-import { FaWhatsapp } from "react-icons/fa";
-import { CiMobile3 } from "react-icons/ci";
+import Link from "next/link";
+import React from "react";
+import { MenuItems } from "@/data/header";
 
 const Header = () => {
-    return (
-        <header className='h-[100px] absolute top-0 w-full z-[1000]'>
-            <div className='bg-white/90 shadow-md backdrop-blur-md'>
-                <div className='lg:mx-12 md:mx-8 mx-6 py-3'>
-                    <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2'>
-                        <div className="col-span-1">
-                            <div>
-                                <img src={'/logos/klogo-trans.webp'} className='max-h-[60px]' alt='logo' />
-                            </div>
-                        </div>
-                        <div className="lg:col-span-1 lg:flex hidden">
-                            <div className='flex items-center justify-center h-full w-full'>
-                                {MenuItems?.map((item, index) => (
-                                    <a href={item?.url} key={index} className='mx-2 hover:bg-[#ffffff3c] px-2 py-1 rounded-[6px]'>{item?.menu}</a>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="col-span-1">
-                            <div className='flex items-center justify-end h-full'>
-                                <a
-                                    href="https://www.instagram.com/thek_marketindia?igsh=Z3dsdW92bHExOThj" // Replace with actual profile URL
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className='mr-4 border border-[#8a221958] rounded-full p-2 text-[#8a2319] hover:bg-[#8a2319] hover:text-[#ffffff] cursor-pointer'
-                                >
-                                    <FaInstagram className='text-[16px]' />
-                                </a>
-
-                                <a
-                                    href="https://wa.me/918714448040"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className='mr-4 border border-[#8a221958] rounded-full p-2 text-[#8a2319] hover:bg-[#8a2319] hover:text-[#ffffff] cursor-pointer'
-                                >
-                                    <FaWhatsapp className='text-[16px]' />
-                                </a>
-
-                                <a
-                                    href="tel:+918714448040"
-                                    className='border border-[#8a221958] rounded-full p-2 text-[#8a2319] hover:bg-[#8a2319] hover:text-[#ffffff] cursor-pointer'
-                                >
-                                    <CiMobile3 className='text-[16px]' />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <header className="sticky top-0 z-50">
+      <div className="bg-sand/80 backdrop-blur border-b border-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex items-center justify-between py-4 gap-4">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="h-12 w-12 rounded-2xl bg-white shadow-card border border-border flex items-center justify-center overflow-hidden">
+                <img
+                  src="/logos/klogo-trans.webp"
+                  className="h-8 w-8 object-contain"
+                  alt="The K Group logo"
+                />
+              </div>
+              <div className="hidden sm:block">
+                <div className="text-text-primary font-semibold leading-none">The K Group</div>
+                <div className="text-[11px] text-text-secondary tracking-[0.4em]">
+                  BUSINESS GROUP
                 </div>
-            </div>
-        </header>
-    )
-}
+              </div>
+            </Link>
 
-export default Header
+            <nav className="hidden lg:flex items-center gap-6 text-[12px] uppercase tracking-[0.28em] text-text-secondary">
+              {MenuItems.map((item) => (
+                <Link
+                  key={item.menu}
+                  href={item.url}
+                  className="hover:text-text-primary relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:scale-x-0 after:bg-accent after:transition-transform after:origin-left hover:after:scale-x-100"
+                >
+                  {item.menu}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-3">
+              <Link
+                href="/services"
+                className="hidden sm:inline-flex items-center justify-center rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:bg-sand transition"
+              >
+                Services
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-ink px-4 py-2 text-sm font-semibold text-white hover:bg-ink/90 transition"
+              >
+                Start a project
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:hidden pb-4">
+            <div className="flex gap-3 overflow-x-auto pb-1">
+              {MenuItems.map((item) => (
+                <Link
+                  key={item.menu}
+                  href={item.url}
+                  className="shrink-0 rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-text-secondary hover:text-text-primary"
+                >
+                  {item.menu}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

@@ -5,20 +5,18 @@ import MotionTextR2L from '../MotionText/MotionTextR2L'
 
 const Products = () => {
     return (
-        <div className='bg-white' id='products'>
+        <div className='bg-background' id='products'>
             <div className="lg:mx-12 md:mx-8 mx-6 py-12">
-                {/* <TitleSection title="Our Best Products For Our Customer" subTitle="Products" description="Our working process at our design agency is carefully 
-                crafted to ensure efficient collaboration, clear communication, and successful project outcomes" /> */}
                 <div className='flex items-center justify-center flex-col mb-16'>
                     <div className='flex items-center mb-1'>
-                        <div className='mr-2 bg-[#8a2319] h-[2px] w-[30px]' />
-                        <span className='text-[14px] font-semibold text-black/60 mr-2'>PRODUCTS</span>
-                        <div className='mr-2 bg-[#8a2319] h-[2px] w-[30px]' />
+                        <div className='mr-2 bg-accent h-[2px] w-[30px]' />
+                        <span className='text-[14px] font-semibold text-text-secondary mr-2'>PRODUCTS</span>
+                        <div className='mr-2 bg-accent h-[2px] w-[30px]' />
                     </div>
-                    <h2 className='lg:text-[44px] md:text-[36px] text-[24px] font-semibold mb-3 text-black/90 lg:leading-[60px] text-center'>
+                    <h2 className='text-[32px] md:text-[28px] text-[24px] font-semibold mb-3 text-text-primary text-center leading-[1.2]'>
                         <MotionTextL2R text='Our Best Products For Our Customer' />
                     </h2>
-                    <div className='text-center text-black/60 text-[16px]'>
+                    <div className='text-center text-text-secondary text-[16px]'>
                         <MotionTextR2L text='Our working process at our design agency is carefully 
                 crafted to ensure efficient collaboration, clear communication, and successful project outcomes' />
                     </div>
@@ -32,7 +30,7 @@ const Products = () => {
                                     <div style={{ backgroundColor: `${item?.color}`, opacity: 0.7 }} className='rounded-md absolute z-0 inset-0' />
                                 </div>
 
-                                <div className='text-[18px] font-medium text-center'>
+                                <div className='text-[18px] font-medium text-center text-text-primary'>
                                     {item?.title}
                                 </div>
                             </div>

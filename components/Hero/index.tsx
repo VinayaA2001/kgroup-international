@@ -1,137 +1,104 @@
-import { IoMdArrowDropleft } from "react-icons/io";
-import React, { useEffect, useRef, useState } from 'react';
-import Slider from 'react-slick';
-import { LuMouse } from "react-icons/lu";
-import { IoMdArrowDropright } from "react-icons/io";
-
-import dynamic from 'next/dynamic';
+import React from "react";
+import Link from "next/link";
 import { ServicesList } from "@/data/services";
+import { CompaniesList } from "@/data/companies";
 
-const MotionTextB2T = dynamic(() => import('../MotionText/MotionTextB2T'), { ssr: false });
+const Hero = () => {
+  const highlightServices = ServicesList.slice(0, 4);
+  const heroCards = ServicesList.slice(0, 3);
+  const partnerLogos = CompaniesList.slice(0, 4);
 
-// const HeroItems = [
-//     {
-//         image: '/images/slide1.webp',
-//         mainText: "Empowering industries with innovative, purpose-led solutions.",
-//         subText: "A dynamic group of companies delivering integrated services with integrity, creativity, and lasting impact."
-//     },
-//     {
-//         image: '/images/slide2.webp',
-//         mainText: "Shaping tomorrow through collaboration, creativity, and purpose.",
-//         subText: "Empowering people and businesses with integrated, forward-thinking solutions that make a difference."
-//     },
-//     {
-//         image: '/images/slide3.webp',
-//         mainText: "Driving progress through unity, innovation, and smart solutions.",
-//         subText: "A future-focused business group delivering trusted services across industries with heart and vision."
-//     }
-// ];
+  return (
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-sand via-white to-mint/40" />
+      <div className="absolute -top-32 right-0 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+      <div className="absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-accent-2/20 blur-3xl" />
 
-
-
-const Hero: React.FC = () => {
-
-    const sliderRef = useRef<Slider>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [progress, setProgress] = useState(0);
-    const duration = 3000;
-    useEffect(() => {
-        setProgress(0);
-        const start = Date.now();
-
-        const interval = setInterval(() => {
-            const elapsed = Date.now() - start;
-            const percent = Math.min((elapsed / duration) * 100, 100);
-            setProgress(percent);
-
-            if (percent >= 100) {
-                sliderRef.current?.slickNext();
-            }
-        }, 50);
-
-        return () => clearInterval(interval);
-    }, [activeIndex]);
-
-    const settings = {
-        dots: false,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        fade: true,
-        cssEase: "linear",
-        beforeChange: (_: number, next: number) => setActiveIndex(next),
-    };
-
-    return (
-        <section className="w-full h-screen overflow-hidden relative">
-            <Slider {...settings} ref={sliderRef}>
-                {ServicesList.map((hero, index) => (
-                    <div key={index} className="relative w-full h-screen">
-                        <img
-                            src={hero?.image}
-                            alt={`Family Slide ${index + 1}`}
-                            className="object-cover w-full h-full"
-                        />
-                        <div className="absolute h-screen bg-[#313232b2] z-[100] inset-0"></div>
-                        <div className="absolute bottom-32 z-[1500] lg:px-24 md:px-12 px-6">
-                            <h1 className='text-white lg:text-[48px] md:text-[36px] text-[28px] font-thin text-left'>
-                                <MotionTextB2T text={hero?.title} />
-                            </h1>
-                            <h6 className="text-white lg:text-[24px] md:text-[16px] text-[16px] font-thin">
-                                <MotionTextB2T text={hero?.description} />
-                            </h6>
-                        </div>
-
-                    </div>
-                ))}
-            </Slider>
-            <div className='flex items-center justify-center bg-black'>
-                <div className='hidden absolute right-0 bottom-[50%] z-[1000] mr-[100px] border-solid border-[2px] border-[#ffffff] 
-                           rounded-full lg:flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
-                    onClick={() => { sliderRef.current?.slickNext(); }}
-                >
-                    <IoMdArrowDropright className="text-white" />
-                </div>
-                <div className='hidden absolute left-0 bottom-[50%] z-[1000] ml-[100px] border-solid border-[2px] border-[#ffffff] 
-                           rounded-full lg:flex items-center justify-center h-[50px] w-[50px] cursor-pointer'
-                    onClick={() => { sliderRef.current?.slickPrev(); }}
-                >
-                    <IoMdArrowDropleft className="text-white" />
-                </div>
-                <div
-                    className="bg-[#ffffff] w-[80vw] h-[4px] rounded-[2px] mr-2 overflow-hidden lg:hidden block absolute z-[1500] bottom-4"
-                >
-                    <div
-                        className="bg-[#8a2319] h-full"
-                        style={{ width: `${progress}%` }}
-                    ></div>
-                </div>
-                <div className='flex bottom-16 left-[100px] absolute z-[1500]'>
-                    {ServicesList?.map((_, index) => (
-                        activeIndex === index ? (
-                            <div
-                                key={index}
-                                className="bg-[#ffffff] w-[80px] h-[4px] rounded-[2px] mr-2 overflow-hidden lg:block hidden"
-                            >
-                                <div
-                                    className="bg-[#8a2319] h-full"
-                                    style={{ width: `${progress}%` }}
-                                ></div>
-                            </div>
-                        ) : (
-                            <div
-                                key={index}
-                                className="bg-[#ffffff] lg:w-[25px] h-[4px] rounded-[2px] mr-2 lg:block hidden"
-                            />
-                        )
-                    ))}
-                </div>
-
-                <LuMouse className='text-white text-[24px] absolute bottom-8 text-center animate-bounce z-[1500]' />
+      <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="section-title mb-4">THE K GROUP</p>
+            <h1 className="text-5xl md:text-6xl font-display text-ink leading-tight">
+              Building companies that feel inevitable.
+            </h1>
+            <p className="mt-6 text-lg text-text-secondary leading-relaxed">
+              We are a business group crafting products, platforms, and services that help
+              ambitious brands grow with clarity, speed, and care.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact" className="button-primary">
+                Start a project
+              </Link>
+              <Link href="/services" className="button-ghost">
+                Explore services
+              </Link>
             </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {highlightServices.map((service) => (
+                <span key={service.slug} className="chip">
+                  {service.title}
+                </span>
+              ))}
+            </div>
+            <div className="mt-10 flex items-center gap-6 text-sm text-text-secondary">
+              <div>
+                <div className="text-2xl font-semibold text-ink">7+</div>
+                <div>Industries served</div>
+              </div>
+              <div className="h-8 w-px bg-border" />
+              <div>
+                <div className="text-2xl font-semibold text-ink">20+</div>
+                <div>Projects delivered</div>
+              </div>
+            </div>
+          </div>
 
-        </section >
-    );
+          <div className="relative">
+            <div className="grid gap-4 sm:grid-cols-2 sm:grid-rows-2">
+              {heroCards.map((card, index) => {
+                const isTall = index === 0;
+                return (
+                  <div
+                    key={card.slug}
+                    className={`group relative overflow-hidden rounded-3xl border border-border bg-white shadow-card ${
+                      isTall ? "sm:row-span-2 min-h-[280px]" : "min-h-[160px]"
+                    }`}
+                  >
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="text-white text-xs uppercase tracking-[0.2em]">
+                        Service
+                      </div>
+                      <div className="text-white text-lg font-semibold">{card.title}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 flex flex-wrap items-center gap-6">
+          <div className="section-title">Trusted by</div>
+          <div className="flex flex-wrap items-center gap-4">
+            {partnerLogos.map((company) => (
+              <div
+                key={company.slug}
+                className="h-12 w-12 rounded-full bg-white border border-border shadow-card flex items-center justify-center overflow-hidden"
+              >
+                <img src={company.logo} alt={company.name} className="h-9 w-9 object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

@@ -1,23 +1,23 @@
 const WorkProcessList = [
     {
-        title: "Research",
-        description: "We begin by gaining a deep understanding of your brand, target audience, industry, and project goals."
+        title: "Discover",
+        description: "We listen first. Workshops, audits, and research align us on goals, audience, and constraints."
     },
     {
-        title: "Strategy",
-        description: "Based on insights gathered, we develop a comprehensive plan and strategy for you project."
+        title: "Define",
+        description: "We shape the strategy, scope, and success metrics with a clear roadmap and priorities."
     },
     {
-        title: "Concept",
-        description: "Our design team explores various creative directions & concepts. Sketch brainstorm and create mood."
+        title: "Design",
+        description: "We craft concepts, flows, and visual systems that communicate with clarity and confidence."
     },
     {
-        title: "Testing",
-        description: "We conduct through testing to ensure that the design and functionality meet user expectations"
+        title: "Build",
+        description: "We develop, integrate, and iterate quickly while keeping performance and quality high."
     },
     {
         title: "Launch",
-        description: "We conduct through testing to ensure that the design and functionality meet user expectations"
+        description: "We test, refine, and ship. Then we track results and optimize for impact."
     },
 ]
 export { WorkProcessList }

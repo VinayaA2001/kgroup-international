@@ -2,7 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: #ffffff;
-  font-family: "Outfit", sans-serif;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.15), transparent 45%),
+      radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.18), transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(15, 26, 43, 0.06), transparent 45%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl leading-snug;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  ::selection {
+    background-color: rgba(249, 115, 22, 0.22);
+    color: #0F1A2B;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-xs uppercase tracking-[0.4em] text-text-secondary;
+  }
+
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur border border-border;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-white shadow-card hover:shadow-lift hover:-translate-y-0.5 transition;
+  }
+
+  .button-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3 text-ink hover:bg-ink hover:text-white transition;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-border bg-white px-3 py-1 text-xs font-semibold text-text-secondary;
+  }
 }
