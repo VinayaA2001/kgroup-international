@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <div className=''>
       <Hero/>
-      <HowWeWork/>
       <Services/>
+      <HowWeWork/>
       <Companies/>
       <About/>
     </div>
@@ -18,3 +18,4 @@ const Home = () => {
 }
 
 export default Home
+

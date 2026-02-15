@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ServicesList } from "@/data/services";
 
 const Services = () => {
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollByCard = (direction: number) => {
+    const container = sliderRef.current;
+    if (!container) return;
+    const firstCard = container.querySelector<HTMLElement>("[data-service-card]");
+    const gap = 24;
+    const cardWidth = firstCard ? firstCard.offsetWidth + gap : 260;
+    container.scrollBy({ left: direction * cardWidth, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const container = sliderRef.current;
+    if (!container) return;
+
+    let isHovered = false;
+    let interval: ReturnType<typeof setInterval> | null = null;
+
+    const start = () => {
+      if (interval) return;
+      interval = setInterval(() => {
+        if (isHovered) return;
+        const maxScroll = container.scrollWidth - container.clientWidth - 4;
+        if (container.scrollLeft >= maxScroll) {
+          container.scrollTo({ left: 0, behavior: "smooth" });
+          return;
+        }
+        scrollByCard(1);
+      }, 900);
+    };
+
+    const stop = () => {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    };
+
+    const onEnter = () => {
+      isHovered = true;
+    };
+    const onLeave = () => {
+      isHovered = false;
+    };
+
+    start();
+    container.addEventListener("mouseenter", onEnter);
+    container.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      stop();
+      container.removeEventListener("mouseenter", onEnter);
+      container.removeEventListener("mouseleave", onLeave);
+    };
+  }, []);
+
   return (
     <section className="bg-gradient-to-b from-background to-white" id="services">
       <div className="max-w-6xl mx-auto px-6 py-20">
@@ -17,17 +73,40 @@ const Services = () => {
               and operational experiences.
             </p>
           </div>
-          <Link href="/services" className="button-ghost">
-            View all services
-          </Link>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollByCard(-1)}
+              className="hidden lg:inline-flex items-center justify-center h-11 w-11 rounded-full border border-border bg-white text-ink hover:bg-sand transition"
+              aria-label="Scroll services left"
+            >
+              ?
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              className="hidden lg:inline-flex items-center justify-center h-11 w-11 rounded-full border border-border bg-white text-ink hover:bg-sand transition"
+              aria-label="Scroll services right"
+            >
+              ?
+            </button>
+            <Link href="/services" className="button-ghost">
+              View all services
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {ServicesList.map((service) => (
+        <div
+          ref={sliderRef}
+          className="mt-10 flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+        >
+          {ServicesList.map((service, index) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group relative overflow-hidden rounded-3xl border border-border bg-white shadow-card transition hover:-translate-y-1 hover:shadow-lift"
+              data-service-card
+              className="group relative snap-start shrink-0 min-w-[180px] sm:min-w-[210px] lg:min-w-[calc((100%-72px)/4)] xl:min-w-[calc((100%-72px)/4)] overflow-hidden rounded-2xl border border-border bg-white shadow-card transition hover:-translate-y-1 hover:shadow-lift service-card"
+              style={{ animationDelay: `${index * 80}ms` }}
             >
               <div className="h-40 overflow-hidden">
                 <img
@@ -36,14 +115,14 @@ const Services = () => {
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6">
-                <div className="text-lg font-semibold text-ink group-hover:text-accent transition">
+              <div className="p-3">
+                <div className="text-base font-semibold text-ink group-hover:text-accent transition">
                   {service.title}
                 </div>
-                <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+                <p className="mt-2 text-sm text-text-secondary leading-relaxed">
                   {service.description}
                 </p>
-                <div className="mt-4 text-xs uppercase tracking-[0.2em] text-text-secondary">
+                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-text-secondary">
                   Learn more
                 </div>
               </div>
@@ -56,3 +135,10 @@ const Services = () => {
 };
 
 export default Services;
+
+
+
+
+
+
+

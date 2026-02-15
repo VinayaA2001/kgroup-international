@@ -10,9 +10,10 @@
   body {
     @apply bg-background text-text-primary font-sans antialiased;
     background-image:
-      radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.15), transparent 45%),
-      radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.18), transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(15, 26, 43, 0.06), transparent 45%);
+      radial-gradient(circle at 12% 18%, rgba(20, 184, 166, 0.22), transparent 42%),
+      radial-gradient(circle at 85% 5%, rgba(249, 115, 22, 0.22), transparent 45%),
+      radial-gradient(circle at 80% 85%, rgba(14, 165, 233, 0.16), transparent 40%),
+      linear-gradient(120deg, rgba(15, 26, 43, 0.04), rgba(15, 26, 43, 0));
     background-attachment: fixed;
   }
 
@@ -40,7 +41,7 @@
   }
 
   ::selection {
-    background-color: rgba(249, 115, 22, 0.22);
+    background-color: rgba(249, 115, 22, 0.28);
     color: #0F1A2B;
   }
 }
@@ -55,14 +56,137 @@
   }
 
   .button-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-white shadow-card hover:shadow-lift hover:-translate-y-0.5 transition;
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-white shadow-card hover:shadow-lift transition;
+    background-image: linear-gradient(120deg, #F97316, #F59E0B, #14B8A6);
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
   }
 
   .button-ghost {
-    @apply inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3 text-ink hover:bg-ink hover:text-white transition;
+    @apply inline-flex items-center justify-center rounded-full border border-ink/20 px-6 py-3 text-ink transition;
   }
 
   .chip {
     @apply inline-flex items-center rounded-full border border-border bg-white px-3 py-1 text-xs font-semibold text-text-secondary;
+    box-shadow: 0 8px 16px rgba(15, 26, 43, 0.08);
+  }
+
+  .service-card {
+    animation: cardFloatIn 0.7s ease-out both;
+  }
+
+  .company-marquee {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: companyMarquee 18s linear infinite;
+  }
+
+  .company-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 26, 43, 0.12);
+    border-radius: 999px;
+    box-shadow: 0 6px 14px rgba(15, 26, 43, 0.08);
+    white-space: nowrap;
+  }
+
+  .company-tile {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+    padding: 12px;
+    border: 1px solid rgba(15, 26, 43, 0.1);
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 8px 18px rgba(15, 26, 43, 0.08);
+    animation: companyTileIn 0.6s ease-out both;
+  }
+
+  .color-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .color-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(249, 115, 22, 0.18), rgba(20, 184, 166, 0.18), rgba(14, 165, 233, 0.12));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .color-glow:hover::after {
+    opacity: 1;
   }
 }
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cardFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes companyMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes companyTileIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .header-highlight {
+    background: linear-gradient(120deg, rgba(249, 115, 22, 0.18), rgba(20, 184, 166, 0.18));
+    color: #0F1A2B;
+    padding: 2px 6px;
+    border-radius: 999px;
+    box-shadow: 0 6px 14px rgba(15, 26, 43, 0.08);
+  }
+}
+

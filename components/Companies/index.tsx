@@ -35,8 +35,8 @@ const Companies = () => {
             const content = (
               <>
                 <div className="flex items-center gap-4">
-                  <div className="h-14 w-14 rounded-2xl bg-white border border-border shadow-card flex items-center justify-center overflow-hidden">
-                    <img src={company.logo} alt={company.name} className="h-10 w-10 object-cover" />
+                  <div className="h-14 w-14 rounded-full bg-white border border-border shadow-card flex items-center justify-center overflow-hidden">
+                    <img src={company.logo} alt={company.name} className="h-10 w-10 rounded-full rounded-full object-cover" />
                   </div>
                   <div>
                     <div className="text-lg font-semibold text-ink group-hover:text-accent transition">
@@ -84,3 +84,6 @@ const Companies = () => {
 };
 
 export default Companies;
+
+
+

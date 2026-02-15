@@ -54,10 +54,10 @@ export const CompaniesList = [
       "Spices and culinary essentials with authentic flavors.",
   },
   {
-    name: "Kims Hospital",
-    slug: "kims-hospital",
-    logo: "/companies/kims-hospital.jpeg",
+    name: "Kshopify",
+    slug: "kshopify",
+    logo: "/images/kshopify.png",
     description:
-      "Healthcare services focused on patient care and trust.",
-  },
-];
+      "E-commerce solutions and storefront experiences built for scale.",
+  },];
+

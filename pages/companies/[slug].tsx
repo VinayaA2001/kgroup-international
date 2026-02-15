@@ -28,8 +28,8 @@ const CompanyDetail = ({ company }: Props) => {
           Back to home
         </Link>
         <div className="mt-6 flex items-center gap-4">
-          <div className="h-16 w-16 rounded-2xl bg-white border border-border shadow-card flex items-center justify-center overflow-hidden">
-            <img src={company.logo} alt={company.name} className="h-12 w-12 object-cover" />
+          <div className="h-16 w-16 rounded-full bg-white border border-border shadow-card flex items-center justify-center overflow-hidden">
+            <img src={company.logo} alt={company.name} className="h-12 w-12 rounded-full rounded-full object-cover" />
           </div>
           <div>
             <h1 className="text-3xl md:text-4xl font-display text-ink">{company.name}</h1>
@@ -77,3 +77,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const company = CompaniesList.find((c) => c.slug === params?.slug);
   return { props: { company } };
 };
+
+

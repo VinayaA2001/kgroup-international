@@ -34,8 +34,8 @@ const Footer = () => {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 mt-12 pb-12 border-b border-white/10">
           <div>
             <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
-                <img src="/logos/klogo.webp" className="h-8 w-8 object-contain" alt="logo" />
+              <div className="h-12 w-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
+                <img src="/logos/klogo.webp" className="h-8 w-8 rounded-full rounded-full object-cover" alt="logo" />
               </div>
               <div>
                 <div className="font-semibold">The K Group</div>
@@ -136,3 +136,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+
